@@ -45,6 +45,7 @@
   ]
   v(0.8fr)
 
+  // Title and author
   line(length: 100%)
 
   block[
@@ -59,19 +60,18 @@
   line(length: 100%)
   v(0.8fr)
 
+  // Universtiy logo
   box(image(logo, height: 15.0%))
   v(0.8fr)
 
-  set table(
+  // Information table
+  table(
     stroke: (x, y) => if y == 2 {
       (bottom: 0.7pt + black)
     } else if y == 0 {
       (top: 0.7pt + black)
     },
     align: (left, left,),
-    )
-
-  table(
     columns: 2,
     [Supervisor:], [#supervisor],
     [Second assessor:], [#second_assessor],
