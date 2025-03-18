@@ -84,16 +84,18 @@
   disclaimer
 
   // Abstract
-  pagebreak()
-  block[
-  #set heading(outlined: false)
-  = Abstract
-  #set par(
-    justify: true,
-  )
-  #set align(left)
-  #abstract
-  ]
+  if abstract != "" {
+    pagebreak()
+    block[
+    #set heading(outlined: false)
+    = Abstract
+    #set par(
+      justify: true,
+    )
+    #set align(left)
+    #abstract
+    ]
+  }
 
   set align(left)
 
