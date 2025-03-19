@@ -1,4 +1,4 @@
-#import "../conf.typ": active, passive
+#import "../conf.typ": *
 
 = Introduction
 <introduction>

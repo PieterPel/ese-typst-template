@@ -11,6 +11,7 @@
   cite(reference, form: "normal", style: "apa")
 }
 
+
 // Main template
 #let conf(
   title: "Your title",
@@ -27,12 +28,27 @@
   disclaimer: "The content of this thesis is the sole responsibility of the author and does not reflect the view of the supervisor, second assessor, Erasmus School of Economics or Erasmus University.",
   doc
 ) = {
-  // General page settings
+  //// General page settings
+  
+  // Font
   set text(font: "New Computer Modern")
 
+  // Margin
   set page(
     margin: 2.5cm,
   )
+
+  // Table
+  let frame(stroke) = (x, y) => (
+    top: if y < 2 { stroke } else { 0pt },
+    bottom: stroke,
+  )
+
+  set table(
+    stroke: frame(rgb(black)),
+  )
+
+  //// Document structure
 
   // Title page
   set align(center)
@@ -113,5 +129,6 @@
 
   outline(indent: auto)
 
+  // Main document appears now
   doc
 }
