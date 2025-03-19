@@ -48,6 +48,9 @@
     stroke: frame(rgb(black)),
   )
 
+  // Equation numbering
+  set math.equation(numbering: "(1)")
+
   //// Document structure
 
   // Title page
