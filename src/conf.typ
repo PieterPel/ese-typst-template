@@ -31,12 +31,18 @@
   //// General page settings
   
   // Font
-  set text(font: "New Computer Modern")
+  set text(
+    font: "New Computer Modern",
+    size: 11pt
+  )
 
   // Margin
   set page(
     margin: 2.5cm,
   )
+
+  // Line spacing
+  set par(leading: 1.5em)
 
   // Table
   let frame(stroke) = (x, y) => (
