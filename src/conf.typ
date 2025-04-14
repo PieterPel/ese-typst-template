@@ -22,8 +22,8 @@
   second_assessor: "Name of your second assessor",
   date: my-date(datetime.today()),
   abstract: lorem(100),
-  universtiy: "Erasmus University Rotterdam",
-  factulty: "Erasmus School of Economics",
+  university: "Erasmus University Rotterdam",
+  faculty: "Erasmus School of Economics",
   logo: "figures/eur.png",
   disclaimer: "The content of this thesis is the sole responsibility of the author and does not reflect the view of the supervisor, second assessor, Erasmus School of Economics or Erasmus University.",
   doc
@@ -40,9 +40,6 @@
   set page(
     margin: 2.5cm,
   )
-
-  // Line spacing
-  set par(leading: 1.5em)
 
   // Table
   let frame(stroke) = (x, y) => (
@@ -62,9 +59,9 @@
   // Title page
   set align(center)
   block[
-    #smallcaps[#universtiy]
+    #smallcaps[#university]
 
-    #smallcaps[#factulty]
+    #smallcaps[#faculty]
 
     #program
   ]
@@ -85,7 +82,7 @@
   line(length: 100%)
   v(0.8fr)
 
-  // Universtiy logo
+  // University logo
   box(image(logo, height: 15.0%))
   v(0.8fr)
 
@@ -137,6 +134,14 @@
   }
 
   outline(indent: auto)
+
+  // Settings that are only applied to the main document
+  set heading(numbering: "1.1")
+  set par(
+    justify: true,
+    leading: 1.5em, // Line spacing
+    first-line-indent: 2em, // Paragraph tab
+  )
 
   // Main document appears now
   doc
