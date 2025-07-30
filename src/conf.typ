@@ -11,6 +11,25 @@
   cite(reference, form: "normal", style: "apa")
 }
 
+#let table-note(content, table-content: none, spacing: 1em) = context [
+  #align(left)[
+    #set par(leading: 1em)
+
+    #let parent-width = if table-content != none {
+      measure(table-content).width
+    } else {
+      page.width
+    }
+    
+    #box(width: parent-width)[
+      #text(size: 10pt)[
+        #emph("Note"): #content
+      ]
+    ]
+    #v(spacing)
+  ]
+]
+
 
 // Main template
 #let conf(
@@ -142,6 +161,46 @@
     leading: 1.5em, // Line spacing
     first-line-indent: 2em, // Paragraph tab
   )
+
+  // Make a normal white line spacing for tables
+  show table.cell: it => {
+    set par(leading: 0.3em)  
+    it
+  }
+
+  // Set line spacing to 1 for captions
+  show figure.caption: it => {
+    set text(size: 10pt)
+    set par(leading: 1em)
+    it
+  }
+
+  // Make table caption appear on top
+  show figure.where(
+    kind: table
+  ): set figure.caption(position: top)
+
+  set page(margin: (
+    inside: 1in,
+    outside: 1in,
+    top: 1in,
+    bottom: 1in,
+  ))
+
+  // Cap width of figure caption to the width of the figure
+  show figure: it => {
+    if "subpar" in repr(it.body) {
+      // For subpar grids, don't constrain caption width
+      set par(justify: true)
+      it
+    } else {
+      // For regular figures, use width constraint
+      let w = measure(it.body).width
+      set par(justify: true)
+      show figure.caption: cap => box(width: w, cap)
+      it
+    }
+  }
 
   // Main document appears now
   doc
