@@ -18,7 +18,7 @@
     #let parent-width = if table-content != none {
       measure(table-content).width
     } else {
-      page.width
+      page.width - page.margin.inside - page.margin.outside
     }
     
     #box(width: parent-width)[
