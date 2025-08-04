@@ -187,6 +187,11 @@
     bottom: 1in,
   ))
 
+  // Center figure caption, but left-align the text
+  show figure.caption: it => {
+    align(box(align(it, left)), center)
+  }
+
   // Cap width of figure caption to the width of the figure
   show figure: it => {
     if "subpar" in repr(it.body) {
@@ -195,7 +200,9 @@
       it
     } else {
       // For regular figures, use width constraint
-      let w = measure(it.body).width
+      let item_width = measure(it.body).width
+      let page_width = page.width - page.margin.inside - page.margin.outside
+      let w = calc.min(item_width, page_width)
       set par(justify: true)
       show figure.caption: cap => box(width: w, cap)
       it
